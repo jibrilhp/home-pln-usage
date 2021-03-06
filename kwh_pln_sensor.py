@@ -29,7 +29,7 @@ while capture_status:
     frac_red = np.divide(float(no_red), size)
     percent_red = np.multiply((float(frac_red)), 100)
 
-    if (percent_red >= 10.0):
+    if (percent_red >= 10.0): #estimated from the red colour percentage impulse LED lamp
         data_capture = {
             'color_percentage': percent_red,
             'created_on': datetime.datetime.now()
