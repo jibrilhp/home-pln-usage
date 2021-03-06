@@ -1,9 +1,3 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/jibril-hartri-putra-03004a109/]
-
 ## About The Project
 
 I'm using a PLN prepaid meter. On a prepaid meter, I can see the stats about measurement KWH, ampere, voltage, time, and the most important things my credit. Unfortunately, I don't know the stats can be saved to my database or I can see them on the PLN website. To solve this problem I create python code to read the impulse lamp on the prepaid meter and count it. Hopefully this useful for you :)
