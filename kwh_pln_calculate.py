@@ -3,7 +3,7 @@ from datetime import datetime,timedelta
 from sqlalchemy import create_engine
 
 IMPULSE_KWH = 1000 #depends on prepaid meter
-RUPIAH_PER_KWH = 1444.70  # R-1/TR 1.301 – 2.200 VA
+RUPIAH_FOREACH_KWH = 1444.70  # R-1/TR 1.301 – 2.200 VA
 
 def run_cron():
     now_date = datetime.now().strftime('%Y-%m-%d')
@@ -32,7 +32,7 @@ def run_cron():
         list_hour = list(df[df['day'] == str(dday)]['hour'].unique())
         for y in list_hour:
             wSumKWH = df[(df['day'] == str(dday)) & (df['hour'] == str(y))]
-            df_summary = df_summary.append({'hour':y,'day':dday,'sum_impulse':wSumKWH.groupby('hour').count()['day'][0],'charges_amount':(wSumKWH.groupby('hour').count()['day'][0])*RUPIAH_PER_KWH/IMPULSE_KWH},ignore_index=True)
+            df_summary = df_summary.append({'hour':y,'day':dday,'sum_impulse':wSumKWH.groupby('hour').count()['day'][0],'charges_amount':(wSumKWH.groupby('hour').count()['day'][0])*RUPIAH_FOREACH_KWH/IMPULSE_KWH},ignore_index=True)
 
     df_summary.to_sql('home_pln_kwh_hour', schema='public', con=conn, if_exists='append', index=False)
     credit_summary = df_summary[df_summary['day'] == yesterday_date].groupby('day').sum()
