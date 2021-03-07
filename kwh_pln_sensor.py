@@ -17,8 +17,7 @@ capture_status = True
 while capture_status:
     (ret, frame) = cap.read()
 
-    result = frame.copy()
-    size = result.size
+    size = frame.size
 
     image = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     lower = np.array([168, 25, 0])
@@ -29,7 +28,7 @@ while capture_status:
     frac_red = np.divide(float(no_red), size)
     percent_red = np.multiply((float(frac_red)), 100)
 
-    
+    print(percent_red)    
     if (percent_red >= 10.0): #estimated from the red colour percentage impulse LED lamp
         data_capture = {
             'color_percentage': percent_red,
