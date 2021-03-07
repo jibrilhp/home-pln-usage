@@ -1,6 +1,4 @@
 import pandas as pd
-import requests
-import urllib.parse
 from datetime import datetime,timedelta
 from sqlalchemy import create_engine
 
